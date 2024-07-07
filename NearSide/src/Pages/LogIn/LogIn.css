@@ -1,0 +1,62 @@
+
+#log-in-parent{
+    display: block;
+}
+
+#luna-logo{
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, 0%);
+    max-height: 400px;
+    min-height: 400px;
+    float: right;
+    margin: 5px;
+}
+
+#luna-banner{
+    position: absolute;
+    left: 50%;
+    top: 330px;
+    transform: translate(-50%, 0%);
+    font-size: 5rem;
+    min-width: 800px;
+    z-index: 5;
+    color: #7F2020;
+}
+
+#formParent{
+    position: absolute;
+    left: 50%;
+    top: 520px;
+    transform: translate(-50%, 0%);
+}
+
+.formGroup{
+    display: flex;
+    flex-direction: row;
+}
+
+.formLabel{
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+    text-align: right;
+    margin-right: 20px;
+}
+
+#formLabel-password{
+    padding-left: 5px;
+}
+
+#logIn-button{
+    position: absolute;
+    left: 50%;
+    top: 600px;
+    transform: translate(-50%, 0%);
+    font-size: 20px;
+    color: aliceblue;
+    background: #698294;
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+}

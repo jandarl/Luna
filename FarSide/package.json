@@ -1,0 +1,18 @@
+{
+  "name": "farside",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "John Andrew Hernandez",
+  "license": "ISC",
+  "description": "The Back-end side of the Luna Inventory System",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}
