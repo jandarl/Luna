@@ -28,6 +28,11 @@ const insertUser = (valueArray) => {
     return dbFunctions.insertDataToTable(db, "users", fields, valueArray);
 };
 
+const insertLogInfo = (valueArray) => {
+    const fields = ['user_name', 'user_desc', 'user_type', 'user_group', 'login_success'];
+    return dbFunctions.insertDataToTable(db, "login_info", fields, valueArray); 
+};
+
 // All Read from Database goes here
 
 const getUserGroups = async () => {
@@ -43,12 +48,16 @@ const getAllUsers = async () => {
 };
 
 const getLogInInfo = async (username) => {
-    const selectors = ['users.user_name', 'users.user_password', 'user_types.user_level', 'user_groups.group_section'];
+    const selectors = ['users.user_password', 'users.user_description', 'user_types.user_level', 'user_groups.group_section'];
     const join_tables = ['user_types', 'user_groups'];
     const join_conditions = ['user_types.type_id = users.user_type', 'user_groups.group_id = users.user_group'];
     username = `\'${username}\'`
 
     return await dbFunctions.readJoinedData(db, selectors, "users", join_tables, join_conditions, "users.user_name", username);
+};
+
+const getLastLogInfo = async () => {
+    return await dbFunctions.readTableFromDB(db, "login_info");
 };
 
 // All Update Table data of the Database goes here
@@ -79,6 +88,10 @@ const deleteUser = (condition) => {
     return dbFunctions.deleteDataOfTable(db, "users", "user_id", condition);
 };
 
+const deleteLastLogIn = () => {
+    return dbFunctions.deleteAllDataOfTable(db, "login_info");
+}
+
 // Export module goes here
 
 const userDBConnect = {
@@ -86,6 +99,7 @@ const userDBConnect = {
     insertUserGroup,
     insertUserType,
     insertUser,
+    insertLogInfo,
 
     // Read Functions
     getUserGroups,
@@ -93,6 +107,7 @@ const userDBConnect = {
     getAllUsers,
 
     getLogInInfo,
+    getLastLogInfo,
 
     // Update Functions
     updateUserGroup,
@@ -102,7 +117,8 @@ const userDBConnect = {
     // Delete Functions
     deleteUserGroup,
     deleteUserType,
-    deleteUser
+    deleteUser,
+    deleteLastLogIn
 };
 
 export default userDBConnect;

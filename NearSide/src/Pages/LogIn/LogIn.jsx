@@ -4,17 +4,22 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import LunaLogo from '/luna-inventory-logo.jpg';
-import UserControl from "../../Comms/UserControlQueries";
+import UsrCtrlQuery from "../../Comms/UserControlQueries";
 import '/src/fonts.css';
 import './LogIn.css';
 
-function LogInPage({workspaceMode}){
+function LogInPage(){
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     function onHandleClick(){
-        UserControl.logIn(username, password);
+       Promise.all([UsrCtrlQuery.logIn(username, password)]).then(function(){
+            var logInfo = UsrCtrlQuery.getLogInfo();
+            if(logInfo.success === true){
+                window.location.href = "#usrctrl";
+            }
+       })
     }
 
     return(

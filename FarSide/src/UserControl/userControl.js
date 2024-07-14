@@ -1,5 +1,5 @@
 import userDBConnect from "./userDBConnect.js";
-import returnCodes from "../returnCode.js";
+import returnCodes from "./returnCode.js";
 
 const logIn = async (body) => {
     const {username, password} = body;
@@ -9,16 +9,41 @@ const logIn = async (body) => {
     if(userInfo.length === 0) return returnCodes.ErrorNotFound;
     if(userInfo.length > 1) return returnCodes.ErrorDuplicateUser;
 
-    const {user_name, user_password, user_level, group_section} = userInfo[0];
+    const {user_password, user_description, user_level, group_section} = userInfo[0];
    
     if(password !== user_password) return returnCodes.ErrorWrongPassword;
 
-    return [user_name, user_level, group_section];
+    return [user_description, user_level, group_section];
+};
+
+const setLastLogInfo = (body) => {
+    const valueArray = [`\'${body.lastLogInfo.username}\'`, `\'${body.lastLogInfo.description}\'`, `${body.lastLogInfo.type}`, `${body.lastLogInfo.group}`, `${body.lastLogInfo.success}`];
+    const retval = userDBConnect.insertLogInfo(valueArray);
+    return retval;
 }
+
+const getLastLogInfo = async () => {
+    const userInfo = await userDBConnect.getLastLogInfo();
+
+    if(userInfo.length === 0) return returnCodes.ErrorNotFound;
+    if(userInfo.length > 1) return returnCodes.ErrorDuplicateUser;
     
+    return userInfo;
+};
+
+const deleteLastLogInfo = () => {
+    const userInfo = userDBConnect.deleteLastLogIn();
+    return userInfo;
+};
+
 
 const userControls = {
-    logIn
+
+    // LogIn functions
+    logIn,
+    setLastLogInfo,
+    getLastLogInfo,
+    deleteLastLogInfo
 }
 
 export default userControls;

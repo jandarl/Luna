@@ -10,6 +10,7 @@ const insertDataToTable = (db, table, fieldArray, valueArray) => {
         db.query(query, (error, results) => {
                 if (error) {
                     reject(error);
+                    console.log(error);
                 }
                 if (results && results.rows) {
                     resolve(`A new record has been added to table ${table}: ${JSON.stringify(results.rows[0])}`);
@@ -132,7 +133,7 @@ const updateDataOfTable = (db, table, field, value, filter, condition) => {
 
 const deleteDataOfTable = (db, table, filter, condition) => {
     return new Promise (function (resolve, reject){
-        const query = `DELETE FROM ${table} WHERE ${filter} = ${condition}`;
+        const query = `DELETE FROM ${table} WHERE ${filter} = ${condition};`;
 
         db.query(query, (error, results) => {
                 if (error) {
@@ -140,6 +141,26 @@ const deleteDataOfTable = (db, table, filter, condition) => {
                 }
                 if (results && results.rows) {
                     resolve(`A record has been deleted from table ${table} with ${filter} of ${condition}`);
+                } 
+                else {
+                    reject(new Error("No results found"));
+                }
+            });
+    });
+};
+
+// Delete all Data from the table
+
+const deleteAllDataOfTable = (db, table) => {
+    return new Promise (function (resolve, reject){
+        const query = `DELETE FROM ${table};`;
+
+        db.query(query, (error, results) => {
+                if (error) {
+                    reject(error);
+                }
+                if (results && results.rows) {
+                    resolve(`All records has been deleted from table ${table}`);
                 } 
                 else {
                     reject(new Error("No results found"));
@@ -163,7 +184,8 @@ const dbFunctions = {
     updateDataOfTable,
 
     // Delete Functions
-    deleteDataOfTable
+    deleteDataOfTable,
+    deleteAllDataOfTable
 }
 
 export default dbFunctions;

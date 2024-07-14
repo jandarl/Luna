@@ -18,6 +18,16 @@ app.get('/', (req, res) => {
     console.log("Awaiting Request");
 });
 
+app.get('/getlogin', (req,res) => {
+    userControl.getLastLogInfo()
+    .then(response => {
+       res.status(200).json(response);
+    })
+    .catch(error => {
+       res.status(500).send(error);
+    });
+});
+
 app.post('/login', (req,res) => {
     userControl.logIn(req.body)
     .then(response => {
@@ -26,6 +36,26 @@ app.post('/login', (req,res) => {
     .catch(error => {
        res.status(500).send(error);
     });
+});
+
+app.post('/setlogin', (req,res) => {
+    userControl.setLastLogInfo(req.body)
+    .then(response => {
+       res.status(200).json(response);
+    })
+    .catch(error => {
+       res.status(500).send(error);
+    });
+});
+
+app.delete(`/deleteLogIn`, (req, res) => {
+   userControl.deleteLastLogInfo()
+   .then(response => {
+       res.status(200).json(response);
+   })
+   .catch(error => {
+       res.status(500).send(error);
+   });
 });
 
 app.listen(farside_port, () => {
