@@ -1,6 +1,8 @@
 import userDBConnect from "./userDBConnect.js";
 import returnCodes from "./returnCode.js";
 
+// LogIn functions
+
 const logIn = async (body) => {
     const {username, password} = body;
 
@@ -37,13 +39,25 @@ const deleteLastLogInfo = () => {
 };
 
 
+// User Control functions
+
+const fetchAllUsers = async () => {
+    const allUsers = await userDBConnect.getAllUsersAvailable();
+    if(allUsers.length === 0) return returnCodes.ErrorNotFound;
+    return allUsers;
+}
+
 const userControls = {
 
     // LogIn functions
     logIn,
     setLastLogInfo,
     getLastLogInfo,
-    deleteLastLogInfo
+    deleteLastLogInfo,
+
+    // User Control functions
+
+    fetchAllUsers
 }
 
 export default userControls;

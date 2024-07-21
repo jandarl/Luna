@@ -32,17 +32,20 @@ function AdminNavbar(){
         }
     }
 
+    const handleLogOut = () => {
+        Promise.all([UsrCtrlQuery.logOut()]);
+    }
+
     function renderNavrBar(){
-        console.log(logInfo);
         if(logInfo.success){
         return(
             <>
             <Navbar bg="light" data-bs-theme="light">
                 <Container id="admin-navbar-container">
                     <Nav className="adminNav">
-                        <Nav.Link href="#usrctrl" className="navLink koulen-regular" id="usrctrl" onClick={() => handleClick("usrctrl")}>User Control</Nav.Link>
-                        <Nav.Link href="#manageinventory" className="navLink koulen-regular" id="manageinventory" onClick={() => handleClick("manageinventory")}>Manage Inventory</Nav.Link>
-                        <Nav.Link href="/" className="navLink koulen-regular">Log Out</Nav.Link>
+                        <Nav.Link href="#usrctrl" className="navLink koulen-regular prevent-select" id="usrctrl" onClick={() => handleClick("usrctrl")}>User Control</Nav.Link>
+                        <Nav.Link href="#manageinventory" className="navLink koulen-regular prevent-select" id="manageinventory" onClick={() => handleClick("manageinventory")}>Manage Inventory</Nav.Link>
+                        <Nav.Link href="/" className="navLink koulen-regular prevent-select" onClick={() => handleLogOut()}>Log Out</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

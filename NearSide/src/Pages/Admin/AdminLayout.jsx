@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Outlet } from "react-router-dom";
+import UsrCtrlQuery from "../../Comms/UserControlQueries";
 import AdminNavbar from "./AdminNavbar";
 import './AdminLayout.css';
 

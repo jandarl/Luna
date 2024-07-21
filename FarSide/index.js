@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
     console.log("Awaiting Request");
 });
 
+// Log In
+
 app.get('/getlogin', (req,res) => {
     userControl.getLastLogInfo()
     .then(response => {
@@ -48,9 +50,21 @@ app.post('/setlogin', (req,res) => {
     });
 });
 
-app.delete(`/deleteLogIn`, (req, res) => {
+app.delete('/deletelogin', (req, res) => {
    userControl.deleteLastLogInfo()
    .then(response => {
+       res.status(200).json(response);
+   })
+   .catch(error => {
+       res.status(500).send(error);
+   });
+});
+
+// User Control
+
+app.get('/getallusers', (req, res) => {
+    userControl.fetchAllUsers()
+    .then(response => {
        res.status(200).json(response);
    })
    .catch(error => {

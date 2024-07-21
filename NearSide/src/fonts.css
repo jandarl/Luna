@@ -1,4 +1,6 @@
 
+/*Fonts*/
+
 .koulen-regular {
   font-family: "Koulen", sans-serif;
   font-weight: 400;
@@ -16,4 +18,24 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+/*Prevent Selection*/
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+/*Settings*/
+
+.pageBanner{
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    font-size: 2.5rem;
+    text-align: left;
+    z-index: 5;
+    color: #7F2020;
+    text-shadow: -1px -1px 0px #7F2020, 1px 1px 0px rgba(0, 0, 0, 0.8);
 }

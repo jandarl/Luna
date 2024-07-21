@@ -25,7 +25,7 @@ function LogInPage(){
     return(
         <div id="log-in-parent">
             <img src={LunaLogo} id="luna-logo"/>
-            <h1 className="kaushan-script-regular" id="luna-banner">Luna Inventory System</h1>
+            <h1 className="kaushan-script-regular prevent-select" id="luna-banner">Luna Inventory System</h1>
             <Form id="formParent">
                 <Form.Group as={Row} className="formGroup" controlId="formPlaintextUsername">
                     <Form.Label column sm="2" className="formLabel kreon-400">Username:</Form.Label>

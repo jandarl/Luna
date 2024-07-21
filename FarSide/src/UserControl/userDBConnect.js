@@ -53,12 +53,20 @@ const getLogInInfo = async (username) => {
     const join_conditions = ['user_types.type_id = users.user_type', 'user_groups.group_id = users.user_group'];
     username = `\'${username}\'`
 
-    return await dbFunctions.readJoinedData(db, selectors, "users", join_tables, join_conditions, "users.user_name", username);
+    return await dbFunctions.readJoinedData(db, selectors, "users", join_tables, join_conditions, true, "users.user_name", username);
 };
 
 const getLastLogInfo = async () => {
     return await dbFunctions.readTableFromDB(db, "login_info");
 };
+
+const getAllUsersAvailable = async () => {
+    const selectors = ['users.user_name', 'users.user_password', 'users.user_description', 'user_groups.group_name', 'user_types.type_name'];
+    const join_tables = ['user_types', 'user_groups'];
+    const join_conditions = ['user_types.type_id = users.user_type', 'user_groups.group_id = users.user_group'];
+
+    return await dbFunctions.readJoinedData(db, selectors, "users", join_tables, join_conditions, false, "", "");
+}
 
 // All Update Table data of the Database goes here
 
@@ -108,6 +116,8 @@ const userDBConnect = {
 
     getLogInInfo,
     getLastLogInfo,
+
+    getAllUsersAvailable,
 
     // Update Functions
     updateUserGroup,

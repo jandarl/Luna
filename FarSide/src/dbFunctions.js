@@ -76,7 +76,7 @@ const readDataFromATable = async (db, table,  filter, condition) => {
 
 // Read Joined Data from tables
 
-const readJoinedData = async (db, selectors, main_table, join_tables, join_conditions, filter, condition) => {
+const readJoinedData = async (db, selectors, main_table, join_tables, join_conditions, use_condition, filter, condition) => {
     var query = `SELECT ${selectors.join(",")} FROM ${main_table}`;
 
     for(let i = 0; i < join_tables.length; i++ ){
@@ -84,7 +84,12 @@ const readJoinedData = async (db, selectors, main_table, join_tables, join_condi
         query += join_query;
     }
 
-    query += ` WHERE ${filter} = ${condition};`;
+    if(use_condition === true){
+        query += ` WHERE ${filter} = ${condition};`;
+    }
+    else{
+        query += `;`;
+    }
 
      try{
         return await new Promise(function (resolve, reject){
