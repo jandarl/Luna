@@ -6,6 +6,20 @@ import './AdminLayout.css';
 
 function AdminLayout(){
 
+    useEffect(() => {
+        window.addEventListener('beforeunload', logOutUser);
+
+        return () => {
+            window.removeEventListener('beforeunload', logOutUser);
+        }
+    })
+
+    const logOutUser = (e) => {
+        e.preventDefault();
+        Promise.all([UsrCtrlQuery.logOut()]);
+        e.returnValue = '';
+    }
+
     return(
         <>
             <AdminNavbar />

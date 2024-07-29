@@ -61,7 +61,7 @@ const getLastLogInfo = async () => {
 };
 
 const getAllUsersAvailable = async () => {
-    const selectors = ['users.user_name', 'users.user_password', 'users.user_description', 'user_groups.group_name', 'user_types.type_name'];
+    const selectors = ['users.user_id, users.user_name', 'users.user_password', 'users.user_description', 'user_groups.group_name', 'user_types.type_name'];
     const join_tables = ['user_types', 'user_groups'];
     const join_conditions = ['user_types.type_id = users.user_type', 'user_groups.group_id = users.user_group'];
 
@@ -71,16 +71,21 @@ const getAllUsersAvailable = async () => {
 // All Update Table data of the Database goes here
 
 const updateUserGroup = (field, value, condition) => {
-    return dbFunctions.updateDataOfTable(db, "user_groups", field, value, "group_id", condition);
+    return dbFunctions.updateAColDataOfRow(db, "user_groups", field, value, "group_id", condition);
 };
 
 const updateUserType = (field, value, condition) => {
-    return dbFunctions.updateDataOfTable(db, "user_types", field, value, "type_id", condition);
+    return dbFunctions.updateAColDataOfRow(db, "user_types", field, value, "type_id", condition);
 };
 
 const updateUser = (field, value, condition) => {
-    return dbFunctions.updateDataOfTable(db, "users", field, value, "user_id", condition);
+    return dbFunctions.updateAColDataOfRow(db, "users", field, value, "user_id", condition);
 };
+
+const updateAllUserData = (valueArray, condition) => {
+    const fields = ['user_name', 'user_password', 'user_description', 'user_group', 'user_type']; 
+    return dbFunctions.updateAllDatDataofRow(db, "users", fields, valueArray, "user_id", condition);
+}
 
 // All Delete Table data of the Database goes here
 
@@ -93,6 +98,7 @@ const deleteUserType = (condition) => {
 };
 
 const deleteUser = (condition) => {
+   // var user = `\'${condition}\'`;
     return dbFunctions.deleteDataOfTable(db, "users", "user_id", condition);
 };
 
@@ -123,6 +129,7 @@ const userDBConnect = {
     updateUserGroup,
     updateUserType,
     updateUser,
+    updateAllUserData,
 
     // Delete Functions
     deleteUserGroup,

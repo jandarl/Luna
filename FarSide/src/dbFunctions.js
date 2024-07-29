@@ -116,7 +116,33 @@ const readJoinedData = async (db, selectors, main_table, join_tables, join_condi
 
 // For Update Data in a table
 
-const updateDataOfTable = (db, table, field, value, filter, condition) => {
+const updateAllDatDataofRow = (db, table, fieldArray, valueArray, filter, condition) => {
+    return new Promise (function (resolve, reject){
+        var query = `UPDATE ${table} SET`;
+
+        for(let i = 0; i < fieldArray.length; i++){
+            query += (i === 0) ? ` ` : `, `;
+            const update_query = `${fieldArray[i]} = ${valueArray[i]}`;
+            query += update_query; 
+        }
+
+        query += ` WHERE ${filter} = ${condition};`;
+
+        db.query(query, (error, results) => {
+            if (error) {
+                reject(error);
+            }
+            if (results && results.rows) {
+                resolve(`A record has been updated on table ${table}: ${JSON.stringify(results.rows[0])}`);
+            } 
+            else {
+                reject(new Error("No results found"));
+            }
+        });
+    });
+};
+
+const updateAColDataOfRow = (db, table, field, value, filter, condition) => {
     return new Promise (function (resolve, reject){
         const query = `UPDATE ${table} SET ${field} = ${value} WHERE ${filter} = ${condition} RETURNING *`;
 
@@ -186,7 +212,8 @@ const dbFunctions = {
     readJoinedData,
 
     // Update Functions
-    updateDataOfTable,
+    updateAllDatDataofRow,
+    updateAColDataOfRow,
 
     // Delete Functions
     deleteDataOfTable,

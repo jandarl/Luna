@@ -62,9 +62,50 @@ app.delete('/deletelogin', (req, res) => {
 
 // User Control
 
+app.post('/adduser', (req,res) => {
+    userControl.insertUser(req.body)
+    .then(response => {
+       res.status(200).json(response);
+    })
+    .catch(error => {
+       res.status(500).send(error);
+    });
+});
+
+app.get('/getusergroups', (req, res) => {
+    userControl.getAllUserGroups()
+    .then(response => {
+       res.status(200).json(response);
+   })
+   .catch(error => {
+       res.status(500).send(error);
+   });
+});
+
+
 app.get('/getallusers', (req, res) => {
     userControl.fetchAllUsers()
     .then(response => {
+       res.status(200).json(response);
+   })
+   .catch(error => {
+       res.status(500).send(error);
+   });
+});
+
+app.put('/:id', (req, res) => {
+    userControl.updateUser(req.params.id, req.body)
+    .then(response => {
+       res.status(200).json(response);
+   })
+   .catch(error => {
+       res.status(500).send(error);
+   });
+});
+
+app.delete('/:id', (req, res) => {
+   userControl.deleteUser(req.params.id)
+   .then(response => {
        res.status(200).json(response);
    })
    .catch(error => {

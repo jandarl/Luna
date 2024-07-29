@@ -1,0 +1,86 @@
+
+#manage-inventory-table-div{
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    text-align: end;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.manageInventoryFormGroup{
+    display: flex;
+    flex-direction: row;
+}
+
+.manageInventoryFormLabel{
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+    text-align: right;
+    margin-right: 20px;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.manageInventoryFormInput{
+    min-width: 300px;
+    min-height: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#manage-form-label-searchitemcode{
+    margin-left: 50px;
+}
+
+.manageInventoryButton{
+    min-width: 100px;
+    min-height: 30px;
+    background: #698294;
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+#search-item-button{
+    margin-left: 10px;
+}
+
+#delete-item-button{
+    margin-left: 550px;
+}
+
+#save-item-button{
+    margin-left: 10px;
+}
+
+#manage-form-label-itemcode{
+    margin-left: 110px;
+}
+
+#manage-form-label-itemname{
+    margin-left: 50px;
+}
+
+#manage-form-input-itemname{
+    min-width: 700px;
+}
+
+#manage-form-label-description{
+    margin-left: 100px;
+}
+
+#manage-form-input-description{
+    min-width: 1174px;
+}
+
+#manage-form-label-itemtype{
+    margin-left: 110px;
+}
+
+#manage-form-label-itemseries{
+    margin-left: 47px;
+}
+
+#manage-form-input-itemseries{
+    min-width: 702px;
+}

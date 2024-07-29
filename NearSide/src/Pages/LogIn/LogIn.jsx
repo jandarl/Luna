@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -13,11 +13,27 @@ function LogInPage(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    useEffect(() => {
+        window.addEventListener('beforeunload', logOutUser);
+
+        return () => {
+            window.removeEventListener('beforeunload', logOutUser);
+        }
+    })
+
+    const logOutUser = (e) => {
+        e.preventDefault();
+        Promise.all([UsrCtrlQuery.logOut()]);
+        e.returnValue = '';
+    }
+
     function onHandleClick(){
        Promise.all([UsrCtrlQuery.logIn(username, password)]).then(function(){
             var logInfo = UsrCtrlQuery.getLogInfo();
             if(logInfo.success === true){
                 window.location.href = "#usrctrl";
+            }else{
+                alert("Invalid Log In attempt!");
             }
        })
     }

@@ -1,67 +1,69 @@
 
-#tableDiv{
+#user-table-div{
     position: absolute;
     left: 10px;
     top: 150px;
     text-align: end;
+    min-width: fit-content;
+    min-height: fit-content;
 }
 
-#formDiv{
+#user-form-div{
     position: absolute;
     top: 150px;
     left: 950px;
     text-align: end;
+    min-width: fit-content;
+    min-height: fit-content;
 }
 
-#userTable{
+#user-table{
     display: block;
     position: relative;
     margin: 10px;
     text-align: center;
+    min-width: fit-content;
+    min-height: fit-content;
 }
 
-#tableHeader{
+#user-table-header{
     color: aliceblue;
     background-color: rgb(91, 130, 132);
 }
 
-#tableBody{
+#user-table-body{
     color: black;
     background-color: rgb(216, 222, 222);
 }
 
-.tablehdrSm{
+.userTablehdrSm{
     min-width: 30px;
 }
 
-.tablehdrMd{
+.userTablehdrMd{
     min-width: 130px;
 }
 
-.tablehdrLg{
+.userTablehdrLg{
     min-width: 300px;
 }
 
-.tableItem:hover{
+.userTableItem:hover{
     background-color: rgb(184, 198, 211);
 }
 
-.tableItemSelected{
+.userTableItemSelected{
     background-color: burlywood;
 }
 
-#delete-button{
+.userTableButton{
     min-width: 100px;
     min-height: 30px;
     background: #698294;
     margin: 5px;
 }
 
-#modify-button{
-    min-width: 100px;
-    min-height: 30px;
-    background: #698294;
-    margin: 5px;
+#delete-user-button{
     margin-right: 15px;
 }
 
@@ -76,6 +78,8 @@
     color: rgb(11, 11, 11);
     text-align: right;
     margin-right: 20px;
+    min-width: fit-content;
+    min-height: fit-content;
 }
 
 .usrCtrlFormInput{
@@ -85,37 +89,37 @@
     font-size: 20px;
 }
 
-#usrCtrlFormLabel-username{
+#user-form-label-username{
    padding-left: 33px;
 }
 
-#usrCtrlFormLabel-password{
+#user-form-label-password{
     padding-left: 38px;
 }
 
-#usrCtrlFormLabel-description{
+#user-form-label-description{
     padding-left: 22px;
 }
 
-#usrCtrlFormLabel-usergroup{
+#user-form-label-usergroup{
     padding-left: 22px;
 }
 
-#usrCtrlFormInput-description{
+#user-form-input-description{
     min-width: 303px;
 }
 
-#usrCtrlFormInput-usergroup{
+#user-form-input-usergroup{
     min-width: 310px;
 }
 
-#admin-chkbox{
+#user-admin-chkbox{
     min-width: 25px;
     min-height: 25px;
     margin: 0px;
 }
 
-#add-user-button{
+.userButton{
     min-width: 100px;
     min-height: 30px;
     background: #698294;

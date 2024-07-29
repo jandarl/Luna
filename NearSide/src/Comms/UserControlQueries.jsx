@@ -8,6 +8,7 @@ var lastLogInfo = {
 };
 
 var allUsers = [];
+var userGroups = [];
 
 function validateLogIn(username, data){
     if(data.length !== 3){
@@ -21,9 +22,9 @@ function validateLogIn(username, data){
         lastLogInfo.success = true;
 
         fetch('http://localhost:3050/setlogin',{
-        method: 'POST',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify({lastLogInfo}),
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({lastLogInfo}),
         })
         .then(response => response.json())
         .then((data) => {
@@ -35,9 +36,9 @@ function validateLogIn(username, data){
 function logIn(username, password){
     return new Promise(function(resolve, reject){
         fetch('http://localhost:3050/login',{
-        method: 'POST',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify({username, password}),
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({username, password}),
         })
         .then(response => response.json())
         .then((data) => {
@@ -52,12 +53,12 @@ function fetchLogInfo(){
       fetch('http://localhost:3050/getlogin')
       .then(response =>  response.json())
       .then(data => {
-        lastLogInfo.username = data.user_name;
-        lastLogInfo.description = data.user_desc;
-        lastLogInfo.type = data.user_type;
-        lastLogInfo.group = data.user_group;
-        lastLogInfo.success = data.login_success;
-        resolve('200');
+            lastLogInfo.username = data.user_name;
+            lastLogInfo.description = data.user_desc;
+            lastLogInfo.type = data.user_type;
+            lastLogInfo.group = data.user_group;
+            lastLogInfo.success = data.login_success;
+            resolve('200');
         });
     });
 };
@@ -82,25 +83,89 @@ function logOut(){
         lastLogInfo.type = "";
         lastLogInfo.group = "";
         lastLogInfo.success = false;
+
+        allUsers = [];
+        userGroups = [];
     });
 };
 
 // User Control
 
+function insertUser(username, password, description, user_group, user_type){
+    var userType = user_type ? 1 : 2;
+
+    return new Promise(function(resolve, reject){
+        fetch('http://localhost:3050/adduser',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({username, password, description, user_group, userType}),
+        })
+        .then(response => response.json())
+        .then((data) => {
+            resolve('200');
+        });
+    });
+};
+
+function fetchAllGroups(){
+    return new Promise(function (resolve, reject){
+        fetch('http://localhost:3050/getusergroups')
+        .then(response =>  response.json())
+        .then(data => {
+           userGroups = data;
+           resolve('200');
+        });
+    });
+};
+
+function getAllGroups(){
+    return userGroups;
+}
+
 function fetchAllUsers(){
     return new Promise(function (resolve, reject){
-      fetch('http://localhost:3050/getallusers')
-      .then(response =>  response.json())
-      .then(data => {
+        fetch('http://localhost:3050/getallusers')
+        .then(response =>  response.json())
+        .then(data => {
            allUsers = data;
            resolve('200');
         });
     });
-}
+};
 
 function getAllUsers(){
     return allUsers;
-}
+};
+
+function updateUser(user_id, username, password, description, user_group, user_type){
+    var userType = user_type ? 1 : 2;
+
+    return new Promise(function(resolve, reject){
+        fetch(`http://localhost:3050/${user_id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({username, password, description, user_group, userType}),
+        })
+        .then(response => response.json())
+        .then((data) => {
+            resolve('200');
+        });
+    });
+};
+
+function deleteUser(user_id){
+    return new Promise(function(resolve, reject){
+        fetch(`http://localhost:3050/${user_id}`,{
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({user_id}),
+        })
+        .then(response => response.json())
+        .then((data) => {
+            resolve('200');
+        });
+    });
+};
 
 const UsrCtrlQuery = {
 
@@ -111,8 +176,13 @@ const UsrCtrlQuery = {
     logOut,
 
     // User Control
+    insertUser,
+    fetchAllGroups,
+    getAllGroups,
     fetchAllUsers,
-    getAllUsers
+    getAllUsers,
+    updateUser,
+    deleteUser
 };
 
 export default UsrCtrlQuery;
