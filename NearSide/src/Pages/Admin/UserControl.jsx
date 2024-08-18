@@ -13,7 +13,7 @@ function UserControl(){
     const [allUsers, setAllUsers] = useState(UsrCtrlQuery.getAllUsers());
     const [allGroups, setAllGroups] = useState(UsrCtrlQuery.getAllGroups());
     const [selectedID, setSelectedID] = useState("");
-    const [userInfo, setUserInfo] = useState(allUsers[0]);
+    const [userInfo, setUserInfo] = useState({});
     const [user_id, setUserId] = useState(0);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -66,7 +66,7 @@ function UserControl(){
 
     const onHandleBtnClick = (e) => {
         if(e.currentTarget.id === "delete-user-button"){
-            if(userInfo !== undefined){
+            if(userInfo.user_id !== undefined){
                 Promise.all([UsrCtrlQuery.deleteUser(userInfo.user_id)]).then(function(){
                     Promise.all([UsrCtrlQuery.fetchAllUsers()]).then(function(){
                     setAllUsers(UsrCtrlQuery.getAllUsers());
@@ -75,7 +75,7 @@ function UserControl(){
             }
         }
         else if(e.currentTarget.id === "modify-seluser-button"){
-            if(userInfo !== undefined){
+            if(userInfo.user_id !== undefined){
                 setUserId(userInfo.user_id);
                 setUsername(userInfo.user_name);
                 setPassword(userInfo.user_password);

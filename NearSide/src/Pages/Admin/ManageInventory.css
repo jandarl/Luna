@@ -84,3 +84,119 @@
 #manage-form-input-itemseries{
     min-width: 702px;
 }
+
+#manage-inventory-stock-label{
+    position: absolute;
+    left: 10px;
+    top: 230px;
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+    text-align: right;
+    margin-right: 20px;
+    margin-left: 35px;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+#manage-inventory-stock-div{
+    position: absolute;
+    left: 215px;
+    top: 280px;
+    text-align: end;
+    min-width: 1180px;
+    min-height: 250px;
+    background-color: #d4d9de;
+}
+
+#manage-form-label-stockgroup{
+    margin-top: 30px;
+    padding-left: 22px;
+}
+
+#manage-form-label-currency{
+    padding-left: 48px;
+}
+
+#manage-form-input-stockgroup{
+    margin-top: 32px;
+    min-width: 180px;
+}
+
+#manage-form-input-currency{
+    min-width: 180px;
+    margin-top: 5px;
+}
+
+#manage-form-label-stockcount{
+    margin-top: 5px;
+    padding-left: 24px;
+}
+
+#manage-form-input-stockcount{
+    margin-top: 5px;
+    max-width: 172px;
+    min-height: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#manage-form-label-itemprice{
+    margin-top: 5px;
+    padding-left: 38px;
+}
+
+#manage-form-input-itemprice{
+    margin-top: 5px;
+    max-width: 172px;
+    min-height: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#save-group-button{
+    margin-top: 0px;
+    margin-left: 225px;
+    margin-bottom: 5px;
+}
+
+#edit-group-button{
+    position: absolute;
+    top: 220px;
+    left: 975px;
+}
+
+#stocktable-div{
+    position: absolute;
+    left: 350px;
+    top: 20px;
+    margin: 10px;
+    text-align: center;
+    max-height: 175px !important;
+    overflow: auto !important;
+}
+
+#stock-table{
+
+}
+
+#stock-table-header{
+    color: aliceblue;
+    background-color: rgb(91, 130, 132);
+}
+
+.stockTablehdrSm{
+    min-width: 150px;
+}
+
+.stockTablehdrMd{
+    min-width: 250px;
+}
+
+#stock-table-body{
+    color: black;
+    background-color: aliceblue;
+}
+
+.stockTableItemSelected{
+    background-color: burlywood;
+}
