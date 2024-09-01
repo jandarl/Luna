@@ -6,6 +6,15 @@ const stockInfo = {
     currency: "PHP"
 }
 
+const InventoryItem = {
+    item_code: 1234567890,
+    item_name: "Sample Item Name",
+    item_description: "This is a sample item description",
+    item_count: 50,
+    item_price: 1200.00,
+    item_currency: "PHP"
+}
+
 
 function getAllStockGroupInfo(){
     const allInfo = [stockInfo, stockInfo, stockInfo, stockInfo, stockInfo, stockInfo];
@@ -17,11 +26,19 @@ function getCurrencyList(){
     return allCurrencies;
 };
 
+function getItemsWithCode(itemCode){
+    const allItems = [InventoryItem, InventoryItem, InventoryItem, InventoryItem, InventoryItem, InventoryItem];
+    return allItems;
+}
+
 const InventoryQuery = {
 
     // Manage Inventory
     getAllStockGroupInfo,
-    getCurrencyList
+    getCurrencyList,
+
+    // Check Inventory
+    getItemsWithCode
 };
 
 export default InventoryQuery;

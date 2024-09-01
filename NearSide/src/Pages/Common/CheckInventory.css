@@ -1,0 +1,70 @@
+
+#check-inventory-div{
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    text-align: end;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.checkInventoryFormGroup{
+    display: flex;
+    flex-direction: row;
+}
+
+.checkInventoryFormLabel{
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+    text-align: right;
+    margin-right: 20px;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.checkInventoryFormInput{
+    min-width: 300px;
+    min-height: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.checkInventoryButton{
+    min-width: 100px;
+    min-height: 30px;
+    background: #698294;
+    margin: 0px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+}
+
+.inventoryTablehdrSm{
+    min-width: 130px;
+}
+
+.inventoryTablehdrMd{
+    min-width: 400px;
+}
+
+.inventoryTablehdrLg{
+     min-width: 650px;
+}
+
+#inventory-table{
+    display: block;
+    position: relative;
+    margin: 10px;
+    text-align: center;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+#inventory-table-header{
+    color: aliceblue;
+    background-color: rgb(91, 130, 132);
+}
+
+#inventory-table-body{
+    color: black;
+    background-color: aliceblue;
+}

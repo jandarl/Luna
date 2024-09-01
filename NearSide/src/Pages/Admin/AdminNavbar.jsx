@@ -44,6 +44,7 @@ function AdminNavbar(){
                 <Container id="admin-navbar-container">
                     <Nav className="adminNav">
                         <Nav.Link href="#usrctrl" className="navLink koulen-regular prevent-select" id="usrctrl" onClick={() => handleClick("usrctrl")}>User Control</Nav.Link>
+                        <Nav.Link href="#checkinventory" className="navLink koulen-regular prevent-select" id="checkinventory" onClick={() => handleClick("checkinventory")}>Check Inventory</Nav.Link>
                         <Nav.Link href="#manageinventory" className="navLink koulen-regular prevent-select" id="manageinventory" onClick={() => handleClick("manageinventory")}>Manage Inventory</Nav.Link>
                         <Nav.Link href="/" className="navLink koulen-regular prevent-select" onClick={() => handleLogOut()}>Log Out</Nav.Link>
                     </Nav>
