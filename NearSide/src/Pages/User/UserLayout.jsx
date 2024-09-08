@@ -1,14 +1,14 @@
 import React, {useEffect} from "react";
 import { Outlet } from "react-router-dom";
 import UsrCtrlQuery from "../../Comms/UserControlQueries";
-import AdminNavbar from "./AdminNavbar";
-import './AdminLayout.css';
+import UserNavbar from "./UserNavBar";
+import './UserLayout.css';
 
-function AdminLayout(){
+function UserLayout(){
 
     useEffect(() => {
         window.addEventListener('beforeunload', logOutUser);
-        checkIfNotAdmin();
+        checkIfAdmin();
 
         return () => {
             window.removeEventListener('beforeunload', logOutUser);
@@ -21,9 +21,9 @@ function AdminLayout(){
         e.returnValue = '';
     }
 
-    const checkIfNotAdmin =() => {
+    const checkIfAdmin =() => {
          var logInfo = UsrCtrlQuery.getLogInfo();
-         if(logInfo.type !== 1){
+         if(logInfo.type === 1){
             e.preventDefault();
             Promise.all([UsrCtrlQuery.logOut()]);
             e.returnValue = '';
@@ -32,7 +32,7 @@ function AdminLayout(){
 
     return(
         <>
-            <AdminNavbar />
+            <UserNavbar />
             <main>
                 <Outlet />
             </main>
@@ -40,4 +40,4 @@ function AdminLayout(){
     )
 };
 
-export default AdminLayout;
+export default UserLayout;

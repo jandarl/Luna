@@ -1,0 +1,25 @@
+#user-navbar-container{
+    position: absolute;
+    display: block;
+    min-width: calc(1530px - 20px);
+    min-height: 50px;
+    left: 10px;
+    top: 20px;
+    align-content: center;
+    background-color: rgba(165, 178, 182, 0.559);
+}
+
+.navLink{
+    margin: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-shadow: -1px -2px 0px rgba(255, 217, 217, 0.575), 1px 2px 0px rgba(0, 0, 0, 0.8);
+    -webkit-text-fill-color:indianred;
+    -webkit-text-stroke-color:black;
+}
+
+.navSelectedLink{
+    -webkit-text-fill-color:rgb(239, 157, 157);
+}

@@ -31,7 +31,12 @@ function LogInPage(){
        Promise.all([UsrCtrlQuery.logIn(username, password)]).then(function(){
             var logInfo = UsrCtrlQuery.getLogInfo();
             if(logInfo.success === true){
-                window.location.href = "#usrctrl";
+                if(logInfo.type === 1){
+                    window.location.href = "#usrctrl";
+                }
+                else{
+                    window.location.href = "#userinventory";
+                }
             }else{
                 alert("Invalid Log In attempt!");
             }

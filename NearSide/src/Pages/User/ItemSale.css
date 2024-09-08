@@ -1,0 +1,104 @@
+
+#item-information-div{
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    min-width: 600px;
+}
+
+#item-cart-div{
+    position: absolute;
+    left: 700px;
+    top: 0px;
+    min-width: 200px;
+}
+
+#item-sale-form-id{
+    position: absolute;
+    top: 150px;
+}
+
+.itemSaleFormGroup{
+    display: flex;
+    flex-direction: row;
+}
+
+.itemSaleFormLabel{
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+    text-align: right;
+    margin-right: 20px;
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+.itemSaleFormInput{
+    min-width: 300px;
+    min-height: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.itemSaleButton{
+    min-width: 100px;
+    min-height: 30px;
+    background: #698294;
+    margin: 0px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+}
+
+#item-sale-label-search{
+    margin-left: 110px;
+}
+
+#item-sale-label-itemcode{
+    margin-left: 82px;
+}
+
+#item-sale-label-itemname{
+    margin-left: 75px;
+}
+
+#item-sale-label-description{
+    margin-left: 30px;
+}
+
+#item-sale-input-description{
+    min-height: 200px;
+}
+
+#item-sale-label-itemprice{
+    margin-left: 82px;
+}
+
+#item-sale-label-itemstock{
+    margin-left: 80px;
+}
+
+#clear-info-itemsale-button{
+    margin-left: 275px;
+}
+
+#item-sale-table{
+    position: absolute;
+    top: 150px;
+}
+
+.itemSaleTablehdrSm{
+    min-width: 130px;
+}
+
+.itemSaleTablehdrMd{
+    min-width: 275px;
+}
+
+#item-sale-table-header{
+    color: aliceblue;
+    background-color: rgb(91, 130, 132);
+}
+
+#item-sale-table-body{
+    color: black;
+    background-color: aliceblue;
+}
