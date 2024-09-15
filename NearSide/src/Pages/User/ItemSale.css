@@ -83,6 +83,7 @@
 #item-sale-table{
     position: absolute;
     top: 150px;
+    max-height: 600px;
 }
 
 .itemSaleTablehdrSm{
@@ -102,3 +103,44 @@
     color: black;
     background-color: aliceblue;
 }
+
+.itemCartButton{
+    min-width: 100px;
+    min-height: 30px;
+    background: #698294;
+    margin: 5px;
+}
+
+#remove-item-button{
+    position: absolute;
+    top: 635px;
+    left: 110px;
+}
+
+#clear-cart-button{
+    position: absolute;
+    top: 635px;
+    left: 0px;
+}
+
+#checkout-button{
+    position: absolute;
+    top: 630px;
+    left: 700px;
+}
+
+#item-sale-label-totalprice{
+    position: absolute;
+    top: 635px;
+    left: 370px;
+    min-width: 150px;
+}
+
+#item-sale-input-totalprice{
+    position: absolute;
+    top: 635px;
+    left: 530px;
+    min-width: 150px;
+    max-width: 150px;
+}
+

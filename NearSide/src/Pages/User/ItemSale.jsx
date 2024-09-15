@@ -19,11 +19,13 @@ function ItemSale(){
     const [description, setDescription] = useState("");
     const [stockCount, setStockCount] = useState(0);
     const [itemPrice, setItemPrice] = useState(0.00);
-    const [currency, setCurrency] = useState(1);
+    const [currency, setCurrency] = useState("");
+    const [totalPrice, setTotalPrice] = useState(0.00);
 
     useEffect(() => {
         Promise.all([InventoryQuery.getItemsWithCode("")]).then(function(){
             setInventoryItems(InventoryQuery.getItemsWithCode(""));
+            setCurrency(inventoryItems[0].item_currency);
         })
     },[]);
 
@@ -137,6 +139,17 @@ function ItemSale(){
         <div id="item-cart-div">
             <h1 className="kaushan-script-regular pageBanner prevent-select">Item Cart</h1>
             {renderItemCart()}
+            <Button variant="primary" size="lg" id="remove-item-button" className="kreon-400 itemCartButton" onClick={onHandleBtnClick}>Remove</Button>
+            <Button variant="primary" size="lg" id="clear-cart-button" className="kreon-400 itemCartButton" onClick={onHandleBtnClick}>Clear Cart</Button>
+            <Button variant="primary" size="lg" id="checkout-button" className="kreon-400 itemCartButton" onClick={onHandleBtnClick}>Checkout</Button>
+            <Form>
+                <Form.Group as={Row} className="itemSaleFormGroup">
+                    <Form.Label column sm="2" className="itemSaleFormLabel kreon-400" id="item-sale-label-totalprice">Total Price ({currency}):</Form.Label>
+                    <Col sm="12">
+                        <Form.Control placeholder="Item Price" className="itemSaleFormInput" id="item-sale-input-totalprice" value={totalPrice} readOnly/>
+                    </Col>
+                </Form.Group>
+            </Form>
         </div>
         </>
     )
